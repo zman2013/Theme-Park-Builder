@@ -1,0 +1,371 @@
+:root {
+  color-scheme: light;
+  font-family: Manrope, sans-serif;
+  color: #173225;
+  background:
+    radial-gradient(circle at top left, rgba(255, 239, 214, 0.95), transparent 28%),
+    radial-gradient(circle at right center, rgba(138, 206, 245, 0.55), transparent 24%),
+    linear-gradient(180deg, #fff9ef, #f4efe3);
+  --panel: rgba(255, 250, 240, 0.82);
+  --line: rgba(24, 53, 40, 0.14);
+  --shadow: 0 24px 80px rgba(36, 59, 47, 0.12);
+  --accent: #e56b54;
+  --accent-strong: #cf533f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+}
+
+button {
+  font: inherit;
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: 360px minmax(780px, 1fr) 340px;
+  gap: 18px;
+  min-height: 100vh;
+  padding: 18px;
+}
+
+.sidebar,
+.play-area {
+  min-height: 0;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.brand,
+.panel,
+.canvas-frame,
+.topbar {
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.brand {
+  overflow: hidden;
+}
+
+.brand-copy {
+  padding: 24px 24px 16px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #a85633;
+}
+
+.brand h1 {
+  margin: 0;
+  font-family: Fraunces, serif;
+  font-size: 2.6rem;
+  line-height: 0.98;
+}
+
+.summary {
+  margin: 14px 0 0;
+  color: #4c6557;
+  line-height: 1.45;
+}
+
+.brand-art {
+  padding: 0 14px 14px;
+}
+
+.brand-art img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #cde9ff, #f5d7b7);
+}
+
+.panel {
+  padding: 18px;
+}
+
+.panel h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.tool-card {
+  display: grid;
+  gap: 5px;
+  padding: 12px;
+  border: 1px solid rgba(26, 58, 45, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  color: #1b3428;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform 0.16s ease,
+    border-color 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+.tool-card:hover,
+.tool-card.active {
+  transform: translateY(-2px);
+  border-color: rgba(229, 107, 84, 0.55);
+  box-shadow: 0 12px 28px rgba(229, 107, 84, 0.16);
+}
+
+.tool-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.tool-card strong {
+  font-size: 1.1rem;
+}
+
+.tool-card small,
+.controls-panel p,
+.status-list small {
+  color: #5a7567;
+  line-height: 1.4;
+}
+
+.play-area {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 0;
+}
+
+.topbar {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  padding: 12px;
+}
+
+.pill,
+.metric {
+  padding: 12px 14px;
+  border: 1px solid rgba(32, 67, 54, 0.1);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.pill span,
+.metric span {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #5d7165;
+}
+
+.pill strong,
+.metric strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 1.5rem;
+}
+
+.canvas-frame {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding: 14px;
+}
+
+#parkCanvas {
+  display: block;
+  width: 100%;
+  height: calc(100vh - 164px);
+  min-height: 720px;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.45), transparent 28%),
+    linear-gradient(180deg, #dff3ff, #f6f0e5);
+  cursor: crosshair;
+}
+
+.hover-card {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  gap: 3px;
+  min-width: 160px;
+  padding: 11px 12px;
+  border: 1px solid rgba(26, 58, 45, 0.12);
+  border-radius: 16px;
+  background: rgba(22, 36, 30, 0.92);
+  color: #fff6eb;
+  pointer-events: none;
+}
+
+.hover-card.hidden {
+  display: none;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.event-feed,
+.status-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.event-feed li,
+.status-list li {
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px;
+  border: 1px solid rgba(30, 60, 48, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.status-list li {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.status-list strong {
+  color: #1f4637;
+}
+
+.primary-button,
+.ghost-button {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, var(--accent), #f19861);
+  color: #fff;
+  font-weight: 800;
+}
+
+.primary-button:hover {
+  background: linear-gradient(135deg, var(--accent-strong), #eb8a53);
+}
+
+.ghost-button {
+  background: rgba(255, 255, 255, 0.82);
+  color: #264739;
+}
+
+@media (max-width: 1400px) {
+  .shell {
+    grid-template-columns: 320px minmax(680px, 1fr);
+  }
+
+  .sidebar.right {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    overflow: visible;
+  }
+}
+
+@media (max-width: 1080px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar.left,
+  .sidebar.right {
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow: visible;
+  }
+
+  .play-area {
+    order: 1;
+  }
+
+  .sidebar.left {
+    order: 2;
+  }
+
+  .sidebar.right {
+    order: 3;
+  }
+
+  .topbar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #parkCanvas {
+    height: 62vh;
+    min-height: 560px;
+  }
+}
+
+@media (max-width: 720px) {
+  .shell {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .tool-grid,
+  .metric-grid,
+  .sidebar.right {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    grid-template-columns: 1fr;
+  }
+
+  #parkCanvas {
+    min-height: 460px;
+  }
+}

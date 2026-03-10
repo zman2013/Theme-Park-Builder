@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>微缩游乐园</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar left">
+        <section class="brand">
+          <div class="brand-copy">
+            <p class="eyebrow">等距游乐园建造器</p>
+            <h1>微缩游乐园</h1>
+            <p class="summary">
+              规划一座精致的小型乐园，摆下招牌设施、铺设蜿蜒小路，迎接热闹又有点混乱的游客潮。
+            </p>
+          </div>
+          <div class="brand-art">
+            <img id="hero-art" alt="游乐园插画" src="./assets/ui-hero.png" />
+          </div>
+        </section>
+
+        <section class="panel tools-panel">
+          <div class="panel-heading">
+            <h2>建造面板</h2>
+            <button id="clearSelection" class="ghost-button" type="button">清除</button>
+          </div>
+          <div id="toolGrid" class="tool-grid"></div>
+        </section>
+
+        <section class="panel controls-panel">
+          <h2>操作说明</h2>
+          <p>
+            左键建造，按住拖动可连续铺路。右键拖动画面，滚轮缩放，方向键或 WASD 移动画面。
+          </p>
+        </section>
+      </aside>
+
+      <main class="play-area">
+        <section class="topbar">
+          <div class="pill"><span>资金</span><strong id="fundsValue">$0</strong></div>
+          <div class="pill"><span>游客</span><strong id="guestValue">0</strong></div>
+          <div class="pill"><span>满意度</span><strong id="happinessValue">0%</strong></div>
+          <div class="pill"><span>整洁度</span><strong id="cleanValue">0%</strong></div>
+          <div class="pill"><span>乐园评分</span><strong id="ratingValue">0</strong></div>
+        </section>
+
+        <section class="canvas-frame">
+          <canvas id="parkCanvas" width="1560" height="980"></canvas>
+          <div id="hoverCard" class="hover-card hidden"></div>
+        </section>
+      </main>
+
+      <aside class="sidebar right">
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>乐园脉搏</h2>
+            <button id="speedButton" class="primary-button" type="button">速度 x1</button>
+          </div>
+          <div class="metric-grid">
+            <div class="metric"><span>排队人数</span><strong id="queueMetric">0</strong></div>
+            <div class="metric"><span>每分钟收入</span><strong id="revenueMetric">$0</strong></div>
+            <div class="metric"><span>垃圾指数</span><strong id="litterMetric">0</strong></div>
+            <div class="metric"><span>游乐设施</span><strong id="rideMetric">0</strong></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>游客反馈</h2>
+          </div>
+          <ul id="eventFeed" class="event-feed"></ul>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>设施状态</h2>
+          </div>
+          <ul id="rideStatus" class="status-list"></ul>
+        </section>
+      </aside>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
