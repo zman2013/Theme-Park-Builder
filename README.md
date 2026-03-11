@@ -2,6 +2,10 @@
 
 A static recreation of the OpenAI Showcase "Theme Park Builder" mini-game.
 
+## Gameplay Preview
+
+![Theme Park Builder gameplay](./assets/theme-park-gameplay.gif)
+
 ## Run
 
 Use any static file server from the project root. For example:
